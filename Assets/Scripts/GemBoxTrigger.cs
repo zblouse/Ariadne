@@ -12,7 +12,7 @@ public class GemBoxTrigger : MonoBehaviour {
 	public bool interacting=false;
 	private bool triggered=false;
 	private bool displayedText=false;
-	private int gemTotal=0;
+	public int gemTotal=0;
 	public GameObject gem1;
 	public GameObject gem2;
 	public GameObject gem3;
@@ -28,6 +28,21 @@ public class GemBoxTrigger : MonoBehaviour {
 		displayedText = false;
 	}
 	void Update(){
+		if (gemBox.Gem1) {
+			gem1.SetActive (true);
+		}
+		if (gemBox.Gem2) {
+			gem2.SetActive (true);
+		}
+		if (gemBox.Gem3) {
+			gem3.SetActive (true);
+		}
+		if (gemBox.Gem4) {
+			gem4.SetActive (true);
+		}
+		if (gemBox.Gem5) {
+			gem5.SetActive (true);
+		}
 		if (triggered) {
 			if (Input.GetKeyDown (KeyCode.X)) {
 				interacting = true;
