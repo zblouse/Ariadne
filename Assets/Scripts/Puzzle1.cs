@@ -26,11 +26,11 @@ public class Puzzle1 : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		if (tile1.tileOn && !tile2.tileOn && tile3.tileOn && !tile4.tileOn && !tile5.tileOn && tile6.tileOn && !tile7.tileOn && tile8.tileOn && tile9.tileOn && !tile10.tileOn && tile11.tileOn && !tile12.tileOn) {
+		if (!tile1.tileOn && tile2.tileOn && !tile3.tileOn && tile4.tileOn && tile5.tileOn && !tile6.tileOn && tile7.tileOn && !tile8.tileOn && !tile9.tileOn && tile10.tileOn && !tile11.tileOn && tile12.tileOn) {
 			puzzleSolved = true;
 		}
 		if (puzzleSolved) {
-			if (door.transform.position.x <= doorInitPos.x + 7) {
+			if (door.transform.position.x <= 20.21 + 7) {
 				door.transform.position = new Vector3 (door.transform.position.x + Time.deltaTime * speed, door.transform.position.y, door.transform.position.z);
 			}
 		}

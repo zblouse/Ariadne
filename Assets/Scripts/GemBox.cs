@@ -23,7 +23,7 @@ public class GemBox : MonoBehaviour {
 		if(Gem1 && Gem2 && Gem3 && Gem4 && Gem5){
 			CompletedPuzzle = true;
 		}
-		if (CompletedPuzzle && door.transform.position.z < initDoorPos.z + 7) {
+		if (CompletedPuzzle && door.transform.position.z < -7.37 + 7) {
 			door.transform.position = new Vector3 (door.transform.position.x,door.transform.position.y,door.transform.position.z+DoorSpeed*Time.deltaTime);
 		}
 	}
