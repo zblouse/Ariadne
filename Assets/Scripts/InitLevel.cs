@@ -6,16 +6,22 @@ public class InitLevel : MonoBehaviour {
 	public GameObject Player;
 	public GameObject Puzzle1Door;
 	public GameObject GemDoor;
+	public GameObject LightDoor;
+	public GameObject ElectricDoor;
 	public GameObject PuzzleScripts;
+
 	private GemInventory PlayerInventory;
 	private Puzzle1 puzzle1;
 	public GameObject box;
 	private GemBox gemBoxInit;
 	private GemBoxTrigger gemBoxTriggerInit;
+	public GameObject Music;
+	private MusicController MusicCon;
 	private int GemCount=0;
 	// Use this for initialization
 	void Awake () {
 		Debug.Log ("I initialized");
+		MusicCon = Music.GetComponent<MusicController> ();
 		puzzle1 = PuzzleScripts.GetComponent<Puzzle1> ();
 		PlayerInventory = Player.GetComponent<GemInventory> ();
 		gemBoxInit = box.GetComponent<GemBox> ();
@@ -24,6 +30,8 @@ public class InitLevel : MonoBehaviour {
 		Player.transform.position = new Vector3(GameControl.control.PlayerPositionX,GameControl.control.PlayerPositionY,GameControl.control.PlayerPositionZ);
 		Puzzle1Door.transform.position = new Vector3 (GameControl.control.Puzzle1DoorX,Puzzle1Door.transform.position.y,Puzzle1Door.transform.position.z);
 		GemDoor.transform.position = new Vector3 (GemDoor.transform.position.x,GemDoor.transform.position.y,GameControl.control.GemDoorZ);
+		LightDoor.transform.position = new Vector3 (LightDoor.transform.position.x,LightDoor.transform.position.y,GameControl.control.LightDoorZ);
+		ElectricDoor.transform.position = new Vector3 (GameControl.control.ElectricDoorX,ElectricDoor.transform.position.y,ElectricDoor.transform.position.z);
 		PlayerInventory.HasGem1 = GameControl.control.PlayerGem1;
 		PlayerInventory.HasGem2 = GameControl.control.PlayerGem2;
 		PlayerInventory.HasGem3 = GameControl.control.PlayerGem3;
@@ -55,7 +63,7 @@ public class InitLevel : MonoBehaviour {
 			GemCount++;
 		}
 		gemBoxTriggerInit.gemTotal = GemCount;
-
+		MusicCon.isUnderground = GameControl.control.isUnderground;
 
 	}
 	
