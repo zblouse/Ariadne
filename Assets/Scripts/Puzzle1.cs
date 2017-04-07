@@ -20,6 +20,8 @@ public class Puzzle1 : MonoBehaviour {
 	public GameObject door;
 	public Vector3 doorInitPos;
 	public float speed;
+	private bool soundPlayed=false;
+	public AudioSource doorMusic;
 	// Use this for initialization
 	void Start(){
 		doorInitPos = door.transform.position;
@@ -30,6 +32,10 @@ public class Puzzle1 : MonoBehaviour {
 			puzzleSolved = true;
 		}
 		if (puzzleSolved) {
+			if (!soundPlayed) {
+				doorMusic.Play ();
+				soundPlayed = true;
+			}
 			if (door.transform.position.x <= 20.21 + 7) {
 				door.transform.position = new Vector3 (door.transform.position.x + Time.deltaTime * speed, door.transform.position.y, door.transform.position.z);
 			}

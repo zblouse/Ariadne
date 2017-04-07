@@ -15,6 +15,7 @@ public class Chest : MonoBehaviour {
 	private Vector3 initGemPosition;
 	private AnimationScript animScript;
 	private bool counting=true;
+	public AudioSource ChestSound;
 	// Use this for initialization
 	void Start(){
 		inventory = player.GetComponent<GemInventory> ();
@@ -27,6 +28,7 @@ public class Chest : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (ChestOpened && !alreadyDone) {
+			ChestSound.Play ();
 			if (GemNum == 1) {
 				inventory.HasGem1 = true;
 				bottomText.text = "You Got A Blue Gem";
@@ -45,7 +47,6 @@ public class Chest : MonoBehaviour {
 			}
 			alreadyDone = true;
 		}
-		Debug.Log (gemTime);
 		if (alreadyDone && counting) {
 			gemTime += Time.deltaTime;
 		

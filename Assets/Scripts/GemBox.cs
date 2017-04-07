@@ -13,6 +13,8 @@ public class GemBox : MonoBehaviour {
 	public bool CompletedPuzzle = false;
 	private bool DoorMoving=false;
 	private Vector3 initDoorPos;
+	private bool soundPlayed=false;
+	public AudioSource doorMusic;
 	// Use this for initialization
 	void Start () {
 		initDoorPos = door.transform.position;
@@ -24,6 +26,10 @@ public class GemBox : MonoBehaviour {
 			CompletedPuzzle = true;
 		}
 		if (CompletedPuzzle && door.transform.position.z < -7.37 + 7) {
+			if (!soundPlayed) {
+				doorMusic.Play ();
+				soundPlayed = true;
+			}
 			door.transform.position = new Vector3 (door.transform.position.x,door.transform.position.y,door.transform.position.z+DoorSpeed*Time.deltaTime);
 		}
 	}

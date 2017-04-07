@@ -8,23 +8,31 @@ public class EscapePanelMenu : MonoBehaviour {
 	public bool menuActive=false;
 	public GameObject escapeMenu;
 	public GameObject Player;
+	public GameObject Music;
+	private MusicController MusicCon;
 	public GameObject Puzzle1Door;
 	public GameObject GemDoor;
+	public GameObject LightDoor;
+	public GameObject ElectricDoor;
 	public GameObject box;
 	private GemBox GemBoxInit;
 	private GemBoxTrigger GemBoxTriggerInit;
 	private GemInventory inventory;
+
+	public Text savedGame;
 	// Use this for initialization
 	void Start () {
 		escapeMenu.SetActive (false);
 		inventory = Player.GetComponent<GemInventory> ();
 		GemBoxInit = box.GetComponent<GemBox> ();
+		MusicCon = Music.GetComponent<MusicController> ();
 		GemBoxTriggerInit = box.GetComponentInChildren <GemBoxTrigger> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
+			savedGame.text = "";
 			menuActive = !menuActive;
 			escapeMenu.SetActive (menuActive);
 		}
@@ -43,6 +51,7 @@ public class EscapePanelMenu : MonoBehaviour {
 		GameControl.control.PlayerPositionZ = Player.transform.position.z;
 		GameControl.control.Puzzle1DoorX = Puzzle1Door.transform.position.x;
 		GameControl.control.GemDoorZ = GemDoor.transform.position.z;
+		GameControl.control.LightDoorZ = LightDoor.transform.position.z;
 		GameControl.control.PlayerGem1 = inventory.HasGem1;
 		GameControl.control.PlayerGem2 = inventory.HasGem2;
 		GameControl.control.PlayerGem3 = inventory.HasGem3;
@@ -53,8 +62,10 @@ public class EscapePanelMenu : MonoBehaviour {
 		GameControl.control.BoxGem3 = GemBoxInit.Gem3;
 		GameControl.control.BoxGem4 = GemBoxInit.Gem4;
 		GameControl.control.BoxGem5 = GemBoxInit.Gem5;
-
+		GameControl.control.isUnderground = MusicCon.isUnderground;
+		GameControl.control.ElectricDoorX = ElectricDoor.transform.position.x;
 		GameControl.control.save ();
+		savedGame.text="Saved Game";
 	}
 
 }

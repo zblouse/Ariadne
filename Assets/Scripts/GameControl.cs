@@ -15,6 +15,8 @@ public class GameControl : MonoBehaviour {
 
 	public float Puzzle1DoorX;
 	public float GemDoorZ;
+	public float LightDoorZ;
+	public float ElectricDoorX;
 
 	public bool PlayerGem1;
 	public bool PlayerGem2;
@@ -28,6 +30,8 @@ public class GameControl : MonoBehaviour {
 	public bool BoxGem4;
 	public bool BoxGem5;
 
+	public bool isUnderground;
+
 
 	// Use this for initialization
 	void Awake () {
@@ -40,10 +44,12 @@ public class GameControl : MonoBehaviour {
 
 			} else {
 				PlayerPositionX = -68.59f;
-				PlayerPositionY = 11.55f;
+				PlayerPositionY = 8f;
 				PlayerPositionZ = 0.61f;
 				Puzzle1DoorX = 20.21f;
 				GemDoorZ = -7.37f;
+				LightDoorZ = -96.98f;
+				ElectricDoorX = 472.95f;
 				PlayerGem1 = false;
 				PlayerGem2 = false;
 				PlayerGem3 = false;
@@ -56,6 +62,7 @@ public class GameControl : MonoBehaviour {
 				BoxGem4 = false;
 				BoxGem5 = false;
 
+				isUnderground = true;
 					
 
 			}
@@ -79,6 +86,8 @@ public class GameControl : MonoBehaviour {
 		data.PlayerPositionZ = control.PlayerPositionZ;
 		data.Puzzle1DoorX = control.Puzzle1DoorX;
 		data.GemDoorZ = control.GemDoorZ;
+		data.LightDoorZ = control.LightDoorZ;
+		data.ElectricDoorX = control.ElectricDoorX;
 		data.PlayerGem1 = control.PlayerGem1;
 		data.PlayerGem2 = control.PlayerGem2;
 		data.PlayerGem3 = control.PlayerGem3;
@@ -89,6 +98,7 @@ public class GameControl : MonoBehaviour {
 		data.BoxGem3 = control.BoxGem3;
 		data.BoxGem4 = control.BoxGem4;
 		data.BoxGem5 = control.BoxGem5;
+		data.isUnderground = control.isUnderground;
 
 		bf.Serialize (file, data);
 		file.Close();
@@ -106,6 +116,8 @@ public class GameControl : MonoBehaviour {
 			control.PlayerPositionZ = data.PlayerPositionZ;
 			control.Puzzle1DoorX = data.Puzzle1DoorX;
 			control.GemDoorZ = data.GemDoorZ;
+			control.LightDoorZ = data.LightDoorZ;
+			control.ElectricDoorX = data.ElectricDoorX;
 			control.PlayerGem1 = data.PlayerGem1;
 			control.PlayerGem2 = data.PlayerGem2;
 			control.PlayerGem3 = data.PlayerGem3;
@@ -116,6 +128,7 @@ public class GameControl : MonoBehaviour {
 			control.BoxGem3 = data.BoxGem3;
 			control.BoxGem4 = data.BoxGem4;
 			control.BoxGem5 = data.BoxGem5;
+			control.isUnderground = data.isUnderground;
 
 		}
 	}
@@ -124,10 +137,12 @@ public class GameControl : MonoBehaviour {
 		FileStream file = File.Create (Application.persistentDataPath+ "/playerDat.dat");
 		PlayerData data = new PlayerData ();
 		data.PlayerPositionX = -68.59f;
-		data.PlayerPositionY = 11.55f;
+		data.PlayerPositionY = 8f;
 		data.PlayerPositionZ = 0.61f;
 		data.Puzzle1DoorX = 20.21f;
 		data.GemDoorZ = -7.37f;
+		data.LightDoorZ = -96.98f;
+		data.ElectricDoorX = 472.95f;
 		data.PlayerGem1 = false;
 		data.PlayerGem2 = false;
 		data.PlayerGem3 = false;
@@ -138,12 +153,16 @@ public class GameControl : MonoBehaviour {
 		data.BoxGem3 = false;
 		data.BoxGem4 = false;
 		data.BoxGem5 = false;
+		data.isUnderground = true;
+
 
 		control.PlayerPositionX = -68.59f;
-		control.PlayerPositionY = 11.55f;
+		control.PlayerPositionY = 8f;
 		control.PlayerPositionZ = 0.61f;
 		control.Puzzle1DoorX = 20.21f;
 		control.GemDoorZ = -7.37f;
+		control.LightDoorZ = -96.98f;
+		control.ElectricDoorX = 472.95f;
 		control.PlayerGem1 = false;
 		control.PlayerGem2 = false;
 		control.PlayerGem3 = false;
@@ -154,7 +173,7 @@ public class GameControl : MonoBehaviour {
 		control.BoxGem3 = false;
 		control.BoxGem4 = false;
 		control.BoxGem5 = false;
-
+		control.isUnderground = true;
 
 
 		bf.Serialize (file, data);
@@ -169,6 +188,8 @@ class PlayerData{
 	public float PlayerPositionZ;
 	public float Puzzle1DoorX;
 	public float GemDoorZ;
+	public float LightDoorZ;
+	public float ElectricDoorX;
 	public bool PlayerGem1;
 	public bool PlayerGem2;
 	public bool PlayerGem3;
@@ -179,5 +200,6 @@ class PlayerData{
 	public bool BoxGem3;
 	public bool BoxGem4;
 	public bool BoxGem5;
+	public bool isUnderground;
 }
 
